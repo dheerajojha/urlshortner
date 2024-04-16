@@ -1,0 +1,20 @@
+{
+	"name": "short_url",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"server": "nodemon index.js",
+		"start": "node index.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"colors": "^1.4.0",
+		"dotenv": "^16.4.5",
+		"express": "^4.19.2",
+		"mongoose": "^8.3.1",
+		"shortid": "^2.2.16"
+	}
+}
