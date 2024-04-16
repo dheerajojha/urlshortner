@@ -8,14 +8,16 @@ const generateShortUrlController = async (req, res) => {
 			res.status(400).json({ success: false, message: "long url is required" });
 		}
 		const shortId = shortid();
-		const shortUrl = await URLModel.create({
+		const generateShortUrl = await URLModel.create({
 			shortUrl: shortId,
 			redirectURL: longUrl,
 			visitHistory: [],
 		});
+
+		const { shortUrl } = generateShortUrl;
 		res.status(201).json({ success: true, message: "short url generated", shortUrl });
 	} catch (error) {
-		res.status(500).json({ success: false, message: "error in creating short url" });
+		res.status(500).json({ success: false, message: "error in creating short url", error });
 	}
 };
 
@@ -26,9 +28,10 @@ const redirectController = async (req, res) => {
 			{ shortUrl },
 			{ $push: { visitHistory: { timestamp: Date.now() } } }
 		);
+
 		res.redirect(updateHistory.redirectURL);
 	} catch (error) {
-		res.status(500).json({ success: false, message: "error in redirecting url" });
+		res.status(500).json({ success: false, message: "error in redirecting url", error });
 	}
 };
 
@@ -42,7 +45,7 @@ const getAnalyticsController = async (req, res) => {
 			.status(200)
 			.json({ success: true, message: "analytics fetched successfully", totalClicks, analytics });
 	} catch (error) {
-		res.status(500).json({ success: false, message: "error in getting analytics" });
+		res.status(500).json({ success: false, message: "error in getting analytics", error });
 	}
 };
 

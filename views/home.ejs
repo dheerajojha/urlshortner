@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			:root {
+				--primaryColor: #0186da;
+				--whiteColor: #fff;
+				--grayColor: #d3ded3;
+				--fortyNinePx: 49px;
+				--thirtySixPx: 36px;
+				--twentyFourPx: 24px;
+				--sixteenPx: 16px;
+				--fourteenPx: 15px;
+			}
+
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+				/* border: 1px solid red; */
+				border: none;
+				outline: none;
+			}
+
+			h1 {
+				font-size: var(--fortyNinePx);
+				font-weight: 700;
+				color: var(--primaryColor);
+			}
+			h2 {
+				font-size: var(--thirtySixPx);
+				font-weight: 600;
+			}
+
+			p {
+				font-size: var(--sixteenPx);
+				font-weight: 400;
+			}
+			.home-wrapper {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				gap: 2rem;
+			}
+			form {
+				width: 70%;
+				height: 45vh;
+				padding: 2rem;
+				border-radius: 5px;
+				box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+				gap: 2rem;
+				display: flex;
+				flex-direction: column;
+				text-align: center;
+			}
+
+			.form-group {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.form-group input {
+				flex: 8;
+				padding: 1rem;
+				border-radius: 5px;
+				border: 1px solid var(--grayColor);
+			}
+			.form-group button {
+				flex: 2;
+			}
+
+			form p {
+				margin-top: 1rem;
+			}
+			.cta {
+				padding: 1rem 1.5rem;
+				background-color: var(--primaryColor);
+				color: var(--whiteColor);
+				border-radius: 5px;
+				display: inline-block;
+			}
+
+			@media screen and (max-width: 768px) {
+				h1 {
+					font-size: var(--thirtySixPx);
+				}
+				h2 {
+					font-size: var(--twentyFourPxPx);
+				}
+
+				p {
+					font-size: var(--fourteenPx);
+				}
+
+				form {
+					gap: 1rem;
+					height: 55vh;
+				}
+
+				.form-group {
+					gap: 1rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="home-wrapper">
+			<h1>SHORT URL</h1>
+			<form action="/shorturl" method="post">
+				<h2>Paste the url to be shortened</h2>
+				<div class="form-group">
+					<input type="text" name="longUrl" placeholder="Enter Link Here" />
+					<button class="cta" type="submit">Generate</button>
+				</div>
+				<div>
+					<p>ShortURL is a free tool to shorten URLs and generate short links</p>
+					<p>URL shortener allows to create a shortened link making it easy to shar</p>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
