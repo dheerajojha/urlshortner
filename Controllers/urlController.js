@@ -15,7 +15,7 @@ const generateShortUrlController = async (req, res) => {
 		});
 
 		const { shortUrl } = generateShortUrl;
-		res.status(201).json({ success: true, message: "short url generated", shortUrl });
+		res.render("home", { shortUrl: shortUrl });
 	} catch (error) {
 		res.status(500).json({ success: false, message: "error in creating short url", error });
 	}
@@ -41,9 +41,9 @@ const getAnalyticsController = async (req, res) => {
 		const results = await URLModel.findOne({ shortUrl });
 		const totalClicks = results.visitHistory.length;
 		const analytics = results.visitHistory;
-		return res
-			.status(200)
-			.json({ success: true, message: "analytics fetched successfully", totalClicks, analytics });
+		return res.render("home", {
+			totalClicks: totalClicks,
+		});
 	} catch (error) {
 		res.status(500).json({ success: false, message: "error in getting analytics", error });
 	}

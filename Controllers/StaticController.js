@@ -6,4 +6,4 @@ const getStaticFileController = (req, res) => {
 	}
 };
 
-export default getStaticFileController;
+export { getStaticFileController };

@@ -54,7 +54,7 @@
 				padding: 2rem;
 				border-radius: 5px;
 				box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-				gap: 2rem;
+				gap: 1.5rem;
 				display: flex;
 				flex-direction: column;
 				text-align: center;
@@ -99,7 +99,7 @@
 
 				form {
 					gap: 1rem;
-					height: 55vh;
+					height: 64vh;
 				}
 
 				.form-group {
@@ -114,12 +114,24 @@
 			<form action="/shorturl" method="post">
 				<h2>Paste the url to be shortened</h2>
 				<div class="form-group">
-					<input type="text" name="longUrl" placeholder="Enter Link Here" />
+					<input type="text" name="longUrl" placeholder="Enter Link Here" required />
 					<button class="cta" type="submit">Generate</button>
 				</div>
 				<div>
+					<% if (locals.shortUrl) { %>
+					<p>
+						SHORT URL GENERATED:<a
+							href="http://localhost:3000/shorturl/redirect/<%=locals.shortUrl %>"
+							><%=locals.shortUrl %></a
+						>
+					</p>
+					<% } %>
+					<p>URL shortener allows to create a shortened link making it easy to share</p>
 					<p>ShortURL is a free tool to shorten URLs and generate short links</p>
-					<p>URL shortener allows to create a shortened link making it easy to shar</p>
+
+					<% if (locals.allUrl) { %>
+					<p>click GENERATED : <%=locals.allUrl %></p>
+					<% } %>
 				</div>
 			</form>
 		</div>
